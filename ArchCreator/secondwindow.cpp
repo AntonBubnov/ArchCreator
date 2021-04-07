@@ -25,17 +25,7 @@ void SecondWindow::on_pushButton_clicked()
     QString width = ui->width->text();
     b = width.toInt();
 
-    QFile file(".//data.txt");
-    if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::information(this,"Error","Path not correct!");
-        return;
-    }
-
-    QTextStream stream(&file);
-
-    stream << "something" << endl;
-
-    file.close();
+    Write_to_file();
 
     if(h>b/2){
         log2 = "image: url(:/new/lancet.PNG);";
@@ -61,4 +51,19 @@ void SecondWindow::on_pushButton_2_clicked()
 {
     window3 = new ThirdWindow(this);
     window3->show();
+}
+
+void SecondWindow::Write_to_file()
+{
+    QFile file(".//data.txt");
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::information(this,"Error","Path not correct!");
+        return;
+    }
+
+    QTextStream stream(&file);
+
+    stream << h << " " << b << " " << a << endl;
+
+    file.close();
 }

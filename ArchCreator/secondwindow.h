@@ -31,6 +31,7 @@ private:
     QPushButton *lancet, *segment, *semicircle, *shamrock;
     ThirdWindow *window3;
     int h=0, a=0, b=0;
+    void Write_to_file();
 
 };
 

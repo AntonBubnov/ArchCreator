@@ -21,6 +21,12 @@ private slots:
 private:
     Ui::ThirdWindow *ui;
     int H, A, B;
+    double xBegin, xEnd, h, X, Y, C, R;;
+    QVector<double> x, y, x1, y1, x2, x3, y3, x4, y4, x5, y5;
+    void DrawPerimeter();
+    void ChangeArch();
+    void DrowNArch();
+    void Read_from_file();
 };
 
 #endif // THIRDWINDOW_H
