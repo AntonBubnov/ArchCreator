@@ -50,14 +50,3 @@ void SecondWindow::on_pushButton_2_clicked()
     window3 = new ThirdWindow(this);
     window3->show();
 }
-/*
-int SecondWindow::value(int X)
-{
-    return h;
-
-}
-*/
-QString SecondWindow::value()
-{
-    return ui->arrow->text();
-}

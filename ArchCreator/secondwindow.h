@@ -16,8 +16,6 @@ public:
     explicit SecondWindow(QWidget *parent = nullptr);
     ~SecondWindow();
 
-    //int value(int X);
-    QString value();
 
 private slots:
     void on_pushButton_clicked();
