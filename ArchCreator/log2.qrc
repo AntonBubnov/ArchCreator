@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/new">
+        <file>Log2.png</file>
+        <file>lancet.PNG</file>
+        <file>segment.PNG</file>
+        <file>semicircle.PNG</file>
+        <file>shamrock.PNG</file>
+    </qresource>
+</RCC>
