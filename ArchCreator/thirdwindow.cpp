@@ -11,10 +11,6 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
     A=0;
     B=0;
 
-    //H = second.value(1);
-   // A = second.value(2);
-    //B = second.value(3);
-
     ui->widget->xAxis->setRange(-B/2-1,B/2+1);
     ui->widget->yAxis->setRange(-A-1,H+1);
     ui->widget->addGraph();

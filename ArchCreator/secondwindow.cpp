@@ -1,7 +1,5 @@
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
-#include <string>
-#include <iostream>
 
 SecondWindow::SecondWindow(QWidget *parent) :
     QDialog(parent),
@@ -19,12 +17,26 @@ SecondWindow::~SecondWindow()
 
 void SecondWindow::on_pushButton_clicked()
 {
+
     QString arrow = ui->arrow->text();
     h = arrow.toInt();
     QString height = ui->height->text();
     a = height.toInt();
     QString width = ui->width->text();
     b = width.toInt();
+
+    QFile file(".//data.txt");
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::information(this,"Error","Path not correct!");
+        return;
+    }
+
+    QTextStream stream(&file);
+
+    stream << "something" << endl;
+
+    file.close();
+
     if(h>b/2){
         log2 = "image: url(:/new/lancet.PNG);";
         lancet = ui->pushButton_4;

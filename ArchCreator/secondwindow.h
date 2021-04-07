@@ -1,8 +1,11 @@
 #ifndef SECONDWINDOW_H
 #define SECONDWINDOW_H
 
-#include <QDialog>
+//#include <QDialog>
 #include "thirdwindow.h"
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
 
 namespace Ui {
 class SecondWindow;
@@ -14,7 +17,7 @@ class SecondWindow : public QDialog
 
 public:
     explicit SecondWindow(QWidget *parent = nullptr);
-    ~SecondWindow();
+    ~SecondWindow();    
 
 
 private slots:
@@ -26,8 +29,8 @@ private:
     Ui::SecondWindow *ui;
     QString log2;
     QPushButton *lancet, *segment, *semicircle, *shamrock;
-    int h=0, a=0, b=0;
     ThirdWindow *window3;
+    int h=0, a=0, b=0;
 
 };
 
