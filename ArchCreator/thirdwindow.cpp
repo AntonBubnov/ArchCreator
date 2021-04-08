@@ -10,12 +10,12 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
 
     Read_from_file();
 
-    h = 0.01;
-    xBegin = -B/2;
-    xEnd = B/2;
+    h = 0.001;
+    xBegin = -B/2.0;
+    xEnd = B/2.0;
 
-    ui->widget->xAxis->setRange(-(3*B)/4,(3*B)/4);
-    ui->widget->yAxis->setRange(-(5*A)/4,H+A/4);
+    ui->widget->xAxis->setRange(-(3*B)/4.0,(3*B)/4.0);
+    ui->widget->yAxis->setRange(-(5*A)/4.0,H+A/4.0);
     ui->widget->addGraph();
 
     switch (N) {
@@ -75,7 +75,7 @@ void ThirdWindow::Read_from_file()
 
 void ThirdWindow::DrawSemicircular()
 {
-    R=B/2;
+    R=B/2.0;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
         y.push_back(sqrt(R*R-X*X));
@@ -89,7 +89,7 @@ void ThirdWindow::DrawSemicircular()
 
 void ThirdWindow::DraweSegment()
 {
-    C = ((B*B)/4-H*H)/(2*H);
+    C = ((B*B)/4.0-H*H)/(2.0*H);
     R = H+C;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
@@ -106,7 +106,7 @@ void ThirdWindow::DraweSegment()
 void ThirdWindow::DraweLancet()
 {
     C = (H*H-(B*B)/4)/B;
-    R = B/2 + C;
+    R = B/2.0 + C;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
         y.push_back(sqrt(R*R-(abs(X)+C)*(abs(X)+C)));
@@ -121,7 +121,7 @@ void ThirdWindow::DraweLancet()
 
 void ThirdWindow::DraweShamrock()
 {
-    R = B/4;
+    R = B/4.0;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
         if(X<=-R || X>=R){
