@@ -25,8 +25,6 @@ void SecondWindow::on_pushButton_clicked()
     QString width = ui->width->text();
     b = width.toInt();
 
-    Write_to_file();
-
     if(h>b/2){
         log2 = "image: url(:/new/lancet.PNG);";
         lancet = ui->pushButton_4;
@@ -49,6 +47,8 @@ void SecondWindow::on_pushButton_clicked()
 
 void SecondWindow::on_pushButton_2_clicked()
 {
+    n=1;
+    Write_to_file();
     window3 = new ThirdWindow(this);
     window3->show();
 }
@@ -63,7 +63,32 @@ void SecondWindow::Write_to_file()
 
     QTextStream stream(&file);
 
-    stream << h << " " << b << " " << a << endl;
+    stream << n << " " << h << " " << b << " " << a;
 
     file.close();
+}
+
+void SecondWindow::on_pushButton_4_clicked()
+{
+    n=3;
+    Write_to_file();
+    window3 = new ThirdWindow(this);
+    window3->show();
+
+}
+
+void SecondWindow::on_pushButton_3_clicked()
+{
+    n=2;
+    Write_to_file();
+    window3 = new ThirdWindow(this);
+    window3->show();
+}
+
+void SecondWindow::on_pushButton_5_clicked()
+{
+    n=4;
+    Write_to_file();
+    window3 = new ThirdWindow(this);
+    window3->show();
 }

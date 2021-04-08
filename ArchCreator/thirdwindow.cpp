@@ -14,10 +14,21 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
     xBegin = -B/2;
     xEnd = B/2;
 
-    ui->widget->xAxis->setRange(-B/2-1,B/2+1);
-    ui->widget->yAxis->setRange(-A-1,H+1);
+    ui->widget->xAxis->setRange(-(3*B)/4,(3*B)/4);
+    ui->widget->yAxis->setRange(-(5*A)/4,H+A/4);
     ui->widget->addGraph();
-    DrawPerimeter();
+
+    switch (N) {
+    case 1: DrawSemicircular();
+        break;
+    case 2: DraweSegment();
+        break;
+    case 3: DraweLancet();
+        break;
+    case 4: DraweShamrock();
+        break;
+    }
+
 }
 
 ThirdWindow::~ThirdWindow()
@@ -26,10 +37,7 @@ ThirdWindow::~ThirdWindow()
 }
 
 void ThirdWindow::DrawPerimeter()
-{
-    xBegin = -B/2;
-    xEnd = B/2;
-
+{    
     for(X=xBegin;X<=xEnd;X+=h){
         x3.push_back(X);
         y3.push_back(-A);
@@ -60,8 +68,80 @@ void ThirdWindow::Read_from_file()
 
     QTextStream stream(&file);
 
-    stream >> H >> B >> A;
+    stream >> N >> H >> B >> A;
 
     file.close();
 }
 
+void ThirdWindow::DrawSemicircular()
+{
+    R=B/2;
+    for(X=xBegin;X<=xEnd;X+=h){
+        x.push_back(X);
+        y.push_back(sqrt(R*R-X*X));
+    }
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->replot();
+
+    DrawPerimeter();
+}
+
+void ThirdWindow::DraweSegment()
+{
+    C = ((B*B)/4-H*H)/(2*H);
+    R = H+C;
+    for(X=xBegin;X<=xEnd;X+=h){
+        x.push_back(X);
+        y.push_back(sqrt(R*R-X*X)-C);
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->replot();
+
+    DrawPerimeter();
+}
+
+void ThirdWindow::DraweLancet()
+{
+    C = (H*H-(B*B)/4)/B;
+    R = B/2 + C;
+    for(X=xBegin;X<=xEnd;X+=h){
+        x.push_back(X);
+        y.push_back(sqrt(R*R-(abs(X)+C)*(abs(X)+C)));
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->replot();
+
+    DrawPerimeter();
+}
+
+void ThirdWindow::DraweShamrock()
+{
+    R = B/4;
+    for(X=xBegin;X<=xEnd;X+=h){
+        x.push_back(X);
+        if(X<=-R || X>=R){
+            y.push_back(sqrt(R*R-pow(sqrt(abs(X)-R),4)));
+        }
+        else{
+            y.push_back(sqrt(R*R-X*X)+R);
+        }
+
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->replot();
+
+    DrawPerimeter();
+}
+
+
+void ThirdWindow::on_pushButton_clicked()
+{
+
+}
