@@ -69,6 +69,9 @@ void SecondWindow::on_pushButton_clicked()
         log2 = "image: url(:/new/Inflexed.png);";
         inflexed = ui->pushButton_8;
         inflexed ->setStyleSheet(log2);
+        log2 = "image: url(:/new/shouldered_flat.png);";
+        shouldered_flat = ui->pushButton_6;
+        shouldered_flat ->setStyleSheet(log2);
     }
 }
 

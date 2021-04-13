@@ -10,7 +10,7 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
 
     Read_from_file();
 
-    h = 0.001;
+    h = B/300.0;
     xBegin = -B/2.0;
     xEnd = B/2.0;
 
@@ -71,11 +71,11 @@ void ThirdWindow::DrawPerimeter()
     */
     x.push_back(xBegin);
     y.push_back(-A);
-    x.push_back(xBegin);
-    y.push_back(0);
+  //  x.push_back(xBegin);
+  //  y.push_back(0);
 
-    x.push_back(xEnd);
-    y.push_back(0);
+  //  x.push_back(xEnd);
+  //  y.push_back(0);
     x.push_back(xEnd);
     y.push_back(-A);
 
@@ -137,7 +137,7 @@ void ThirdWindow::DraweSegment()
 void ThirdWindow::DraweLancet()
 {
     DrawPerimeter();
-    C = (H*H-(B*B)/4)/B;
+    C = (H*H-(B*B)/4.0)/B;
     R = B/2.0 + C;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
@@ -252,8 +252,8 @@ void ThirdWindow::DrawElliptical()
 {
     DrawPerimeter();
     for(X=xBegin;X<=xEnd;X+=h){
-            x.push_back(X);
-            y.push_back(H*sqrt(1-(4*X*X)/(B*B)));
+        x.push_back(X);
+        y.push_back(H*sqrt(1-(4*X*X)/(B*B)));
     }
 
     ui->widget->addGraph();
@@ -266,9 +266,9 @@ void ThirdWindow::DrawCycloid()
 {
     DrawPerimeter();
     R=B/(2*3.14);
-    for(X=-2*3.14;X<=0;X+=h){
-            x.push_back(R*(X+3.14)-R*sin(X));
-            y.push_back(R-R*cos(X));
+    for(X=-2*3.14;X<=0;X+=0.01){
+        x.push_back(R*(X+3.14)-R*sin(X));
+        y.push_back(R-R*cos(X));
     }
 
     ui->widget->addGraph();
@@ -280,5 +280,13 @@ void ThirdWindow::DrawCycloid()
 
 void ThirdWindow::on_pushButton_clicked()
 {
+    QString fileName(".//Graph.pdf");
+        QFile file(fileName);
 
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            qDebug() << file.errorString();
+        } else {
+            ui->widget->savePdf(fileName);
+        }
 }
