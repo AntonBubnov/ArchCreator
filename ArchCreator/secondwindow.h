@@ -31,10 +31,14 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_6_clicked();
+
 private:
     Ui::SecondWindow *ui;
     QString log2;
-    QPushButton *lancet, *segment, *semicircle, *shamrock;
+    QPushButton *lancet, *segment, *semicircle, *shamrock, *inflexed, *shouldered_flat;
     ThirdWindow *window3;
     int h=0, a=0, b=0, n=0;
     void Write_to_file();

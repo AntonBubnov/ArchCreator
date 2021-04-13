@@ -27,6 +27,10 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
         break;
     case 4: DraweShamrock();
         break;
+    case 5: DraweInflexed();
+        break;
+    case 6: DrawShouldered_flat();
+        break;
     }
 
 }
@@ -37,7 +41,7 @@ ThirdWindow::~ThirdWindow()
 }
 
 void ThirdWindow::DrawPerimeter()
-{    
+{    /*
     for(X=xBegin;X<=xEnd;X+=h){
         x3.push_back(X);
         y3.push_back(-A);
@@ -56,6 +60,21 @@ void ThirdWindow::DrawPerimeter()
     ui->widget->addGraph();
     ui->widget->graph(3)->addData(x2,y1);
     ui->widget->replot();
+    */
+    x.push_back(xBegin);
+    y.push_back(-A);
+    x.push_back(xBegin);
+    y.push_back(0);
+
+    x.push_back(xEnd);
+    y.push_back(0);
+    x.push_back(xEnd);
+    y.push_back(-A);
+
+    x1.push_back(xBegin);
+    y1.push_back(-A);
+    x1.push_back(xEnd);
+    y1.push_back(-A);
 }
 
 void ThirdWindow::Read_from_file()
@@ -75,6 +94,7 @@ void ThirdWindow::Read_from_file()
 
 void ThirdWindow::DrawSemicircular()
 {
+    DrawPerimeter();
     R=B/2.0;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
@@ -82,13 +102,15 @@ void ThirdWindow::DrawSemicircular()
     }
     ui->widget->addGraph();
     ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
     ui->widget->replot();
 
-    DrawPerimeter();
+    //DrawPerimeter();
 }
 
 void ThirdWindow::DraweSegment()
 {
+    DrawPerimeter();
     C = ((B*B)/4.0-H*H)/(2.0*H);
     R = H+C;
     for(X=xBegin;X<=xEnd;X+=h){
@@ -98,13 +120,15 @@ void ThirdWindow::DraweSegment()
 
     ui->widget->addGraph();
     ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
     ui->widget->replot();
 
-    DrawPerimeter();
+   // DrawPerimeter();
 }
 
 void ThirdWindow::DraweLancet()
 {
+    DrawPerimeter();
     C = (H*H-(B*B)/4)/B;
     R = B/2.0 + C;
     for(X=xBegin;X<=xEnd;X+=h){
@@ -114,13 +138,15 @@ void ThirdWindow::DraweLancet()
 
     ui->widget->addGraph();
     ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
     ui->widget->replot();
 
-    DrawPerimeter();
+   // DrawPerimeter();
 }
 
 void ThirdWindow::DraweShamrock()
 {
+    DrawPerimeter();
     R = B/4.0;
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
@@ -135,9 +161,53 @@ void ThirdWindow::DraweShamrock()
 
     ui->widget->addGraph();
     ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
     ui->widget->replot();
 
+   // DrawPerimeter();
+}
+
+void ThirdWindow::DraweInflexed()
+{
     DrawPerimeter();
+    R = (H*H+(B*B)/4.0)/(2.0*H);
+    for(X=xBegin;X<=xEnd;X+=h){
+        x.push_back(X);
+        y.push_back(R-sqrt(R*R-pow(sqrt(-(abs(X)-B/2.0)),4)));
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
+    ui->widget->replot();
+
+   // DrawPerimeter();
+}
+
+void ThirdWindow::DrawShouldered_flat()
+{
+    DrawPerimeter();
+    R = B/4.0;
+    for(X=xBegin;X<=xEnd;X+=h){
+        if(X<=-R || X>=R){
+            x.push_back(X);
+            y.push_back(sqrt(R*R-pow(sqrt(abs(X)-R),4)));
+        }
+        else{
+            x.push_back(-R);
+            y.push_back(H);
+            x.push_back(R);
+            y.push_back(H);
+            X=R;
+        }
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
+    ui->widget->replot();
+
+    //DrawPerimeter();
 }
 
 

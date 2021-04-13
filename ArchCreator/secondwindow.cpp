@@ -29,11 +29,17 @@ void SecondWindow::on_pushButton_clicked()
         log2 = "image: url(:/new/lancet.PNG);";
         lancet = ui->pushButton_4;
         lancet ->setStyleSheet(log2);
+        log2 = "image: url(:/new/shouldered_flat.png);";
+        shouldered_flat = ui->pushButton_6;
+        shouldered_flat ->setStyleSheet(log2);
     }
     else if(h<b/2){
         log2 = "image: url(:/new/segment.PNG);";
         segment = ui->pushButton_3;
         segment ->setStyleSheet(log2);
+        log2 = "image: url(:/new/Inflexed.png);";
+        inflexed = ui->pushButton_8;
+        inflexed ->setStyleSheet(log2);
     }
     else{
         log2 = "image: url(:/new/semicircle.PNG);";
@@ -42,6 +48,9 @@ void SecondWindow::on_pushButton_clicked()
         log2 = "image: url(:/new/shamrock.PNG);";
         shamrock = ui->pushButton_5;
         shamrock ->setStyleSheet(log2);
+        log2 = "image: url(:/new/Inflexed.png);";
+        inflexed = ui->pushButton_8;
+        inflexed ->setStyleSheet(log2);
     }
 }
 
@@ -88,6 +97,22 @@ void SecondWindow::on_pushButton_3_clicked()
 void SecondWindow::on_pushButton_5_clicked()
 {
     n=4;
+    Write_to_file();
+    window3 = new ThirdWindow(this);
+    window3->show();
+}
+
+void SecondWindow::on_pushButton_8_clicked()
+{
+    n=5;
+    Write_to_file();
+    window3 = new ThirdWindow(this);
+    window3->show();
+}
+
+void SecondWindow::on_pushButton_6_clicked()
+{
+    n=6;
     Write_to_file();
     window3 = new ThirdWindow(this);
     window3->show();
