@@ -35,13 +35,22 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_12_clicked();
+
+    void on_pushButton_10_clicked();
+
 private:
     Ui::SecondWindow *ui;
     QString log2;
-    QPushButton *lancet, *segment, *semicircle, *shamrock, *inflexed, *shouldered_flat;
+    QPushButton *lancet, *segment, *semicircle, *shamrock, *inflexed, *shouldered_flat, *parabolic, *root, *elliptical, *cycloid;
     ThirdWindow *window3;
     int h=0, a=0, b=0, n=0;
     void Write_to_file();
+    void FormCreation();
 
 };
 

@@ -31,6 +31,14 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
         break;
     case 6: DrawShouldered_flat();
         break;
+    case 7: DrawParabolic();
+        break;
+    case 8: DrawRoot();
+        break;
+    case 9: DrawElliptical();
+        break;
+    case 10: DrawCycloid();
+        break;
     }
 
 }
@@ -208,6 +216,65 @@ void ThirdWindow::DrawShouldered_flat()
     ui->widget->replot();
 
     //DrawPerimeter();
+}
+
+void ThirdWindow::DrawParabolic()
+{
+    DrawPerimeter();
+    C = (-4.0*H)/(B*B);
+    for(X=xBegin;X<=xEnd;X+=h){
+            x.push_back(X);
+            y.push_back(C*X*X+H);
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
+    ui->widget->replot();
+}
+
+void ThirdWindow::DrawRoot()
+{
+    DrawPerimeter();
+    C = H/sqrt(B);
+    for(X=xBegin;X<=xEnd;X+=h){
+            x.push_back(X);
+            y.push_back(C*sqrt(X+B/2.0));
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
+    ui->widget->replot();
+}
+
+void ThirdWindow::DrawElliptical()
+{
+    DrawPerimeter();
+    for(X=xBegin;X<=xEnd;X+=h){
+            x.push_back(X);
+            y.push_back(H*sqrt(1-(4*X*X)/(B*B)));
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
+    ui->widget->replot();
+}
+
+void ThirdWindow::DrawCycloid()
+{
+    DrawPerimeter();
+    R=B/(2*3.14);
+    for(X=-2*3.14;X<=0;X+=h){
+            x.push_back(R*(X+3.14)-R*sin(X));
+            y.push_back(R-R*cos(X));
+    }
+
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->graph(1)->addData(x1,y1);
+    ui->widget->replot();
 }
 
 

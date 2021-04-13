@@ -25,6 +25,24 @@ void SecondWindow::on_pushButton_clicked()
     QString width = ui->width->text();
     b = width.toInt();
 
+    log2 = "image: url(:/new/Parabolic.png);";
+    parabolic = ui->pushButton_9;
+    parabolic ->setStyleSheet(log2);
+
+    log2 = "image: url(:/new/root.jpg);";
+    root = ui->pushButton_7;
+    root ->setStyleSheet(log2);
+
+    if(h<1+b/3.14 && h>-1+b/3.14){
+        log2 = "image: url(:/new/cycloid.png);";
+        cycloid = ui->pushButton_10;
+        cycloid ->setStyleSheet(log2);
+    }
+
+    log2 = "image: url(:/new/Elliptical.png);";
+    elliptical = ui->pushButton_12;
+    elliptical ->setStyleSheet(log2);
+
     if(h>b/2){
         log2 = "image: url(:/new/lancet.PNG);";
         lancet = ui->pushButton_4;
@@ -54,14 +72,6 @@ void SecondWindow::on_pushButton_clicked()
     }
 }
 
-void SecondWindow::on_pushButton_2_clicked()
-{
-    n=1;
-    Write_to_file();
-    window3 = new ThirdWindow(this);
-    window3->show();
-}
-
 void SecondWindow::Write_to_file()
 {
     QFile file(".//data.txt");
@@ -77,43 +87,69 @@ void SecondWindow::Write_to_file()
     file.close();
 }
 
-void SecondWindow::on_pushButton_4_clicked()
+void SecondWindow::FormCreation()
 {
-    n=3;
     Write_to_file();
     window3 = new ThirdWindow(this);
     window3->show();
+}
 
+void SecondWindow::on_pushButton_2_clicked()
+{
+    n=1;
+    FormCreation();
 }
 
 void SecondWindow::on_pushButton_3_clicked()
 {
     n=2;
-    Write_to_file();
-    window3 = new ThirdWindow(this);
-    window3->show();
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_4_clicked()
+{
+    n=3;
+    FormCreation();
 }
 
 void SecondWindow::on_pushButton_5_clicked()
 {
     n=4;
-    Write_to_file();
-    window3 = new ThirdWindow(this);
-    window3->show();
+    FormCreation();
 }
 
 void SecondWindow::on_pushButton_8_clicked()
 {
     n=5;
-    Write_to_file();
-    window3 = new ThirdWindow(this);
-    window3->show();
+    FormCreation();
 }
 
 void SecondWindow::on_pushButton_6_clicked()
 {
     n=6;
-    Write_to_file();
-    window3 = new ThirdWindow(this);
-    window3->show();
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_9_clicked()
+{
+    n=7;
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_7_clicked()
+{
+    n=8;
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_12_clicked()
+{
+    n=9;
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_10_clicked()
+{
+    n=10;
+    FormCreation();
 }

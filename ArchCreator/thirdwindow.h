@@ -31,6 +31,10 @@ private:
     void DraweShamrock();
     void DraweInflexed();
     void DrawShouldered_flat();
+    void DrawParabolic();
+    void DrawRoot();
+    void DrawElliptical();
+    void DrawCycloid();
 };
 
 #endif // THIRDWINDOW_H
