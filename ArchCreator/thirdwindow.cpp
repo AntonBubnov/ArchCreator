@@ -10,7 +10,7 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
 
     Read_from_file();
 
-    h = B/300.0;
+    h = B/400.0;
     xBegin = -B/2.0;
     xEnd = B/2.0;
 
@@ -69,20 +69,20 @@ void ThirdWindow::DrawPerimeter()
     ui->widget->graph(3)->addData(x2,y1);
     ui->widget->replot();
     */
-    x.push_back(xBegin);
-    y.push_back(-A);
-  //  x.push_back(xBegin);
-  //  y.push_back(0);
 
-  //  x.push_back(xEnd);
-  //  y.push_back(0);
-    x.push_back(xEnd);
-    y.push_back(-A);
-
+    x1.push_back(xBegin);
+    y1.push_back(0);
     x1.push_back(xBegin);
     y1.push_back(-A);
     x1.push_back(xEnd);
     y1.push_back(-A);
+    x1.push_back(xEnd);
+    y1.push_back(0);
+
+    x.push_back(xBegin);
+    y.push_back(0);
+    x.push_back(xEnd);
+    y.push_back(0);
 }
 
 void ThirdWindow::Read_from_file()
@@ -108,12 +108,13 @@ void ThirdWindow::DrawSemicircular()
         x.push_back(X);
         y.push_back(sqrt(R*R-X*X));
     }
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
 
-    //DrawPerimeter();
+    x2.push_back(0);
+    y2.push_back(0);
+
+    DrawGraph();
+
+  //DrawPerimeter();
 }
 
 void ThirdWindow::DraweSegment()
@@ -126,10 +127,10 @@ void ThirdWindow::DraweSegment()
         y.push_back(sqrt(R*R-X*X)-C);
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    x2.push_back(0);
+    y2.push_back(-C);
+
+    DrawGraph();
 
    // DrawPerimeter();
 }
@@ -144,16 +145,19 @@ void ThirdWindow::DraweLancet()
         y.push_back(sqrt(R*R-(abs(X)+C)*(abs(X)+C)));
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    x2.push_back(-C);
+    y2.push_back(0);
+    x2.push_back(C);
+    y2.push_back(0);
+
+    DrawGraph();
 
    // DrawPerimeter();
 }
 
 void ThirdWindow::DraweShamrock()
 {
+    h = B/500.0;
     DrawPerimeter();
     R = B/4.0;
     for(X=xBegin;X<=xEnd;X+=h){
@@ -167,10 +171,14 @@ void ThirdWindow::DraweShamrock()
 
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    x2.push_back(-R);
+    y2.push_back(0);
+    x2.push_back(0);
+    y2.push_back(R);
+    x2.push_back(R);
+    y2.push_back(0);
+
+    DrawGraph();
 
    // DrawPerimeter();
 }
@@ -184,36 +192,45 @@ void ThirdWindow::DraweInflexed()
         y.push_back(R-sqrt(R*R-pow(sqrt(-(abs(X)-B/2.0)),4)));
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    x2.push_back(xBegin);
+    y2.push_back(R);
+    x2.push_back(xEnd);
+    y2.push_back(R);
+
+    DrawGraph();
 
    // DrawPerimeter();
 }
 
 void ThirdWindow::DrawShouldered_flat()
 {
+    h = B/500.0;
     DrawPerimeter();
     R = B/4.0;
     for(X=xBegin;X<=xEnd;X+=h){
-        if(X<=-R || X>=R){
+        if(X<-R || X>R){
             x.push_back(X);
             y.push_back(sqrt(R*R-pow(sqrt(abs(X)-R),4)));
         }
         else{
             x.push_back(-R);
+            y.push_back(R);
+            x.push_back(-R);
             y.push_back(H);
             x.push_back(R);
             y.push_back(H);
+            x.push_back(R);
+            y.push_back(R);
             X=R;
         }
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    x2.push_back(-R);
+    y2.push_back(0);
+    x2.push_back(R);
+    y2.push_back(0);
+
+    DrawGraph();
 
     //DrawPerimeter();
 }
@@ -227,10 +244,7 @@ void ThirdWindow::DrawParabolic()
             y.push_back(C*X*X+H);
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    DrawGraph();
 }
 
 void ThirdWindow::DrawRoot()
@@ -242,24 +256,24 @@ void ThirdWindow::DrawRoot()
             y.push_back(C*sqrt(X+B/2.0));
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    DrawGraph();
 }
 
 void ThirdWindow::DrawElliptical()
 {
     DrawPerimeter();
+    C = sqrt(((B*B)/4.0) - H*H);
     for(X=xBegin;X<=xEnd;X+=h){
         x.push_back(X);
         y.push_back(H*sqrt(1-(4*X*X)/(B*B)));
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    x2.push_back(-C);
+    y2.push_back(0);
+    x2.push_back(C);
+    y2.push_back(0);
+
+    DrawGraph();
 }
 
 void ThirdWindow::DrawCycloid()
@@ -271,22 +285,40 @@ void ThirdWindow::DrawCycloid()
         y.push_back(R-R*cos(X));
     }
 
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->replot();
+    DrawGraph();
 }
 
 
 void ThirdWindow::on_pushButton_clicked()
 {
-    QString fileName(".//Graph.pdf");
-        QFile file(fileName);
+    QString fileName = QFileDialog::getSaveFileName(this, "Save document...", qApp->applicationDirPath(), "*.pdf");
+    if (!fileName.isEmpty())
+    {
+          ui->widget->savePdf(fileName);
+    }
+}
 
-        if (!file.open(QIODevice::WriteOnly))
-        {
-            qDebug() << file.errorString();
-        } else {
-            ui->widget->savePdf(fileName);
-        }
+void ThirdWindow::DrawGraph()
+{
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->addGraph();
+    ui->widget->graph(1)->addData(x1,y1);
+    /*
+    ui->widget->addGraph();
+    ui->widget->graph(2)->setData(x2, y2);
+    ui->widget->graph(2)->setPen(QColor(50, 50, 50, 255));
+    ui->widget->graph(2)->setLineStyle(QCPGraph::lsNone);
+    ui->widget->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    */
+    ui->widget->addGraph();
+    ui->widget->graph(2)->setData(x2, y2);
+    QCPScatterStyle myScatter; //описывает точки http://www.qcustomplot.com/documentation/classQCPScatterStyle.html
+    myScatter.setShape(QCPScatterStyle::ssCircle);//тип точки
+    myScatter.setPen(QPen(Qt::green)); //внешний цвет точки
+    myScatter.setBrush(Qt::green);  //внутренний цвет точки
+    myScatter.setSize(8);  //размер точки
+    ui->widget->graph(2)->setScatterStyle(myScatter);
+    ui->widget->graph(2)->setLineStyle(QCPGraph::lsNone); //убирает линию
+    ui->widget->replot();
 }

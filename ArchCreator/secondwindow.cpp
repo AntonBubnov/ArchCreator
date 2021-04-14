@@ -25,11 +25,11 @@ void SecondWindow::on_pushButton_clicked()
     QString width = ui->width->text();
     b = width.toInt();
 
-    log2 = "image: url(:/new/Parabolic.png);";
+    log2 = "image: url(:/new/Парабола.jpg);";
     parabolic = ui->pushButton_9;
     parabolic ->setStyleSheet(log2);
 
-    log2 = "image: url(:/new/root.jpg);";
+    log2 = "image: url(:/new/Корень.png);";
     root = ui->pushButton_7;
     root ->setStyleSheet(log2);
 
@@ -39,37 +39,37 @@ void SecondWindow::on_pushButton_clicked()
         cycloid ->setStyleSheet(log2);
     }
 
-    log2 = "image: url(:/new/Elliptical.png);";
+    log2 = "image: url(:/new/Эллипс.jpg);";
     elliptical = ui->pushButton_12;
     elliptical ->setStyleSheet(log2);
 
     if(h>b/2){
-        log2 = "image: url(:/new/lancet.PNG);";
+        log2 = "image: url(:/new/Стрельчатая.jpg);";
         lancet = ui->pushButton_4;
         lancet ->setStyleSheet(log2);
-        log2 = "image: url(:/new/shouldered_flat.png);";
+        log2 = "image: url(:/new/Плечо.jpg);";
         shouldered_flat = ui->pushButton_6;
         shouldered_flat ->setStyleSheet(log2);
     }
     else if(h<b/2){
-        log2 = "image: url(:/new/segment.PNG);";
+        log2 = "image: url(:/new/Сегментная.jpg);";
         segment = ui->pushButton_3;
         segment ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Inflexed.png);";
+        log2 = "image: url(:/new/Занавеса.jpg);";
         inflexed = ui->pushButton_8;
         inflexed ->setStyleSheet(log2);
     }
     else{
-        log2 = "image: url(:/new/semicircle.PNG);";
+        log2 = "image: url(:/new/Круговая.jpg);";
         semicircle = ui->pushButton_2;
         semicircle ->setStyleSheet(log2);
-        log2 = "image: url(:/new/shamrock.PNG);";
+        log2 = "image: url(:/new/Трилисник.jpg);";
         shamrock = ui->pushButton_5;
         shamrock ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Inflexed.png);";
+        log2 = "image: url(:/new/Занавеса.jpg);";
         inflexed = ui->pushButton_8;
         inflexed ->setStyleSheet(log2);
-        log2 = "image: url(:/new/shouldered_flat.png);";
+        log2 = "image: url(:/new/Плечо.jpg);";
         shouldered_flat = ui->pushButton_6;
         shouldered_flat ->setStyleSheet(log2);
     }

@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>783</width>
+    <width>780</width>
     <height>640</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>780</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>780</width>
+    <height>640</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -169,8 +181,14 @@
        <widget class="QPushButton" name="pushButton_2">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -182,8 +200,14 @@
        <widget class="QPushButton" name="pushButton_10">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -195,8 +219,14 @@
        <widget class="QPushButton" name="pushButton_13">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -208,8 +238,14 @@
        <widget class="QPushButton" name="pushButton_12">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -221,8 +257,14 @@
        <widget class="QPushButton" name="pushButton_4">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -234,8 +276,14 @@
        <widget class="QPushButton" name="pushButton_7">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -247,8 +295,14 @@
        <widget class="QPushButton" name="pushButton_3">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -260,8 +314,14 @@
        <widget class="QPushButton" name="pushButton_5">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -273,8 +333,14 @@
        <widget class="QPushButton" name="pushButton_6">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -286,8 +352,14 @@
        <widget class="QPushButton" name="pushButton_9">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -299,8 +371,14 @@
        <widget class="QPushButton" name="pushButton_11">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
@@ -312,8 +390,14 @@
        <widget class="QPushButton" name="pushButton_8">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>160</height>
+          <width>135</width>
+          <height>165</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>165</height>
          </size>
         </property>
         <property name="text">
