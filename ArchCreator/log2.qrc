@@ -2,7 +2,6 @@
     <qresource prefix="/new">
         <file>Log2.png</file>
         <file>cycloid.png</file>
-        <file>Корень.png</file>
         <file>Круговая.jpg</file>
         <file>Занавеса.jpg</file>
         <file>Корень.jpg</file>

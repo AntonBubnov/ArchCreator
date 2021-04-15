@@ -29,7 +29,7 @@ void SecondWindow::on_pushButton_clicked()
     parabolic = ui->pushButton_9;
     parabolic ->setStyleSheet(log2);
 
-    log2 = "image: url(:/new/Корень.png);";
+    log2 = "image: url(:/new/Корень.jpg);";
     root = ui->pushButton_7;
     root ->setStyleSheet(log2);
 
