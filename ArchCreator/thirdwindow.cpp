@@ -313,7 +313,7 @@ void ThirdWindow::DrawGraph()
     */
     ui->widget->addGraph();
     ui->widget->graph(2)->setData(x2, y2);
-    QCPScatterStyle myScatter; //описывает точки http://www.qcustomplot.com/documentation/classQCPScatterStyle.html
+    QCPScatterStyle myScatter; //описывает точки
     myScatter.setShape(QCPScatterStyle::ssCircle);//тип точки
     myScatter.setPen(QPen(Qt::green)); //внешний цвет точки
     myScatter.setBrush(Qt::green);  //внутренний цвет точки
