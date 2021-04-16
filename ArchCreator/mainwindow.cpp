@@ -6,10 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    log2 = "image: url(:/new/Log2.png);";
+    Logo = "image: url(:/new/Логотип.png);";
 
-    Log2 = ui->pushButton;
-    Log2 ->setStyleSheet(log2);
+    logo = ui->pushButton;
+    logo ->setStyleSheet(Logo);
 }
 
 MainWindow::~MainWindow()
@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    hide();
+    hide(); // Закрівает окно
     window2 = new SecondWindow(this);
     window2->show();
 }

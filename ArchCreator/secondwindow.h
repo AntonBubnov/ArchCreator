@@ -43,9 +43,13 @@ private slots:
 
     void on_pushButton_10_clicked();
 
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_11_clicked();
+
 private:
     Ui::SecondWindow *ui;
-    QString log2;
+    QString Arch;
     QPushButton *lancet, *segment, *semicircle, *shamrock, *inflexed, *shouldered_flat, *parabolic, *root, *elliptical, *cycloid;
     ThirdWindow *window3;
     int h=0, a=0, b=0, n=0;

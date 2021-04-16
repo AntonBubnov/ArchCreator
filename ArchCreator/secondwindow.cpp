@@ -25,53 +25,53 @@ void SecondWindow::on_pushButton_clicked()
     QString width = ui->width->text();
     b = width.toInt();
 
-    log2 = "image: url(:/new/Парабола.jpg);";
+    Arch = "image: url(:/new/Парабола.jpg);";
     parabolic = ui->pushButton_9;
-    parabolic ->setStyleSheet(log2);
+    parabolic ->setStyleSheet(Arch);
 
-    log2 = "image: url(:/new/Корень.jpg);";
+    Arch = "image: url(:/new/Корень.jpg);";
     root = ui->pushButton_7;
-    root ->setStyleSheet(log2);
+    root ->setStyleSheet(Arch);
 
     if(h<1+b/3.14 && h>-1+b/3.14){
-        log2 = "image: url(:/new/cycloid.png);";
+        Arch = "image: url(:/new/cycloid.png);";
         cycloid = ui->pushButton_10;
-        cycloid ->setStyleSheet(log2);
+        cycloid ->setStyleSheet(Arch);
     }
 
-    log2 = "image: url(:/new/Эллипс.jpg);";
+    Arch = "image: url(:/new/Эллипс.jpg);";
     elliptical = ui->pushButton_12;
-    elliptical ->setStyleSheet(log2);
+    elliptical ->setStyleSheet(Arch);
 
     if(h>b/2){
-        log2 = "image: url(:/new/Стрельчатая.jpg);";
+        Arch = "image: url(:/new/Стрельчатая.jpg);";
         lancet = ui->pushButton_4;
-        lancet ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Плечо.jpg);";
+        lancet ->setStyleSheet(Arch);
+        Arch = "image: url(:/new/Плечо.jpg);";
         shouldered_flat = ui->pushButton_6;
-        shouldered_flat ->setStyleSheet(log2);
+        shouldered_flat ->setStyleSheet(Arch);
     }
     else if(h<b/2){
-        log2 = "image: url(:/new/Сегментная.jpg);";
+        Arch = "image: url(:/new/Сегментная.jpg);";
         segment = ui->pushButton_3;
-        segment ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Занавеса.jpg);";
+        segment ->setStyleSheet(Arch);
+        Arch = "image: url(:/new/Занавеса.jpg);";
         inflexed = ui->pushButton_8;
-        inflexed ->setStyleSheet(log2);
+        inflexed ->setStyleSheet(Arch);
     }
     else{
-        log2 = "image: url(:/new/Круговая.jpg);";
+        Arch = "image: url(:/new/Круговая.jpg);";
         semicircle = ui->pushButton_2;
-        semicircle ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Трилисник.jpg);";
+        semicircle ->setStyleSheet(Arch);
+        Arch = "image: url(:/new/Трилисник.jpg);";
         shamrock = ui->pushButton_5;
-        shamrock ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Занавеса.jpg);";
+        shamrock ->setStyleSheet(Arch);
+        Arch = "image: url(:/new/Занавеса.jpg);";
         inflexed = ui->pushButton_8;
-        inflexed ->setStyleSheet(log2);
-        log2 = "image: url(:/new/Плечо.jpg);";
+        inflexed ->setStyleSheet(Arch);
+        Arch = "image: url(:/new/Плечо.jpg);";
         shouldered_flat = ui->pushButton_6;
-        shouldered_flat ->setStyleSheet(log2);
+        shouldered_flat ->setStyleSheet(Arch);
     }
 }
 
@@ -154,5 +154,17 @@ void SecondWindow::on_pushButton_12_clicked()
 void SecondWindow::on_pushButton_10_clicked()
 {
     n=10;
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_13_clicked()
+{
+    n=11;
+    FormCreation();
+}
+
+void SecondWindow::on_pushButton_11_clicked()
+{
+    n=12;
     FormCreation();
 }

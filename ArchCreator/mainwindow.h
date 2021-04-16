@@ -24,8 +24,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QString log2;
-    QPushButton *Log2;
+    QString Logo;
+    QPushButton *logo;
     SecondWindow *window2;
 
 };

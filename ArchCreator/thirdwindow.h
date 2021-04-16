@@ -21,7 +21,7 @@ private slots:
 private:
     Ui::ThirdWindow *ui;
     int  N;
-    double H, A, B, xBegin, xEnd, yBegin, yEnd, h, X, Y, C, R;
+    double H, A, B, xBegin, xEnd, yBegin, yEnd, h, X, Y, C, R, L, d;
     QVector<double> x, y, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
     void DrawGraph();
     void DrawPerimeter();
