@@ -26,6 +26,7 @@ private:
     QVector<double> x, y, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
     QString Name;
     void DrawGraph();
+    void DrawPoint();
     void DrawPerimeter();
     void Read_from_file();
     void DrawSemicircular();

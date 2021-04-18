@@ -99,6 +99,9 @@ ThirdWindow::ThirdWindow(QWidget *parent) :
     Text_H->setText(str_H);
     Text_H->setFont(QFont(font().family(), 10));
 
+    ui->widget->setInteraction(QCP::iRangeZoom, true);
+    ui->widget->setInteraction(QCP::iRangeDrag, true);
+
     ui->widget->replot();
 }
 
@@ -181,6 +184,8 @@ void ThirdWindow::DrawSemicircular()
     Text_R2->position->setCoords(0.25*B,-0.075*B);
     Text_R2->setText(str_R);
     Text_R2->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DraweSegment()
@@ -241,6 +246,8 @@ void ThirdWindow::DraweSegment()
     Text_R2->setRotation(atan(C/(B/2.0))*180/M_PI);
     Text_R2->setText(str_R);
     Text_R2->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DraweLancet()
@@ -307,6 +314,8 @@ void ThirdWindow::DraweLancet()
     Text_R2->setRotation(-atan(H/C)*180/M_PI);
     Text_R2->setText(str_R);
     Text_R2->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DraweShamrock()
@@ -420,6 +429,8 @@ void ThirdWindow::DraweShamrock()
     Text_R7->setRotation(-90);
     Text_R7->setText(str_R);
     Text_R7->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DraweInflexed()
@@ -445,6 +456,63 @@ void ThirdWindow::DraweInflexed()
     y2.push_back(R);
 
     DrawGraph();
+
+    dx=(0.075*2*B*(R-H))/sqrt(B*B+4*(R-H)*(R-H));
+    dy=dx*B/(2*(R-H));
+
+    QString str_R=QString("%1").arg(R, 0, 'f', 0);
+
+    QCPItemLine *arrow_R1 = new QCPItemLine(ui->widget);
+    arrow_R1->start->setCoords(-B/2.0, R);
+    arrow_R1->end->setCoords(-B/2.0, 0);
+    arrow_R1->setHead(QCPLineEnding::esSpikeArrow);
+
+    QCPItemText *Text_R1 = new QCPItemText(ui->widget);
+    Text_R1->position->setCoords((-(B/2.0))-0.075*B, R/2.0);
+    Text_R1->setRotation(-90);
+    Text_R1->setText(str_R);
+    Text_R1->setFont(QFont(font().family(), 10));
+
+    QCPItemLine *arrow_R2 = new QCPItemLine(ui->widget);
+    arrow_R2->start->setCoords(B/2.0, R);
+    arrow_R2->end->setCoords(B/2.0, 0);
+    arrow_R2->setHead(QCPLineEnding::esSpikeArrow);
+
+    QCPItemText *Text_R2 = new QCPItemText(ui->widget);
+    Text_R2->position->setCoords((B/2.0)+0.075*B, R/2.0);
+    Text_R2->setRotation(90);
+    Text_R2->setText(str_R);
+    Text_R2->setFont(QFont(font().family(), 10));
+
+    QCPItemLine *arrow_R3 = new QCPItemLine(ui->widget);
+    arrow_R3->start->setCoords(-B/2.0, R);
+    arrow_R3->end->setCoords(0, H);
+    arrow_R3->setHead(QCPLineEnding::esSpikeArrow);
+
+    QCPItemText *Text_R3 = new QCPItemText(ui->widget);
+    if(H!=R){
+        Text_R3->position->setCoords((-B/4.0)-dx, (H+R)/2.0-dy);
+        Text_R3->setRotation(atan((R-H)/(B/2.0))*180/M_PI);
+    }
+    else Text_R3->position->setCoords(-(B/4.0), H+0.075*B);
+    Text_R3->setText(str_R);
+    Text_R3->setFont(QFont(font().family(), 10));
+
+    QCPItemLine *arrow_R4 = new QCPItemLine(ui->widget);
+    arrow_R4->start->setCoords(B/2.0, R);
+    arrow_R4->end->setCoords(0, H);
+    arrow_R4->setHead(QCPLineEnding::esSpikeArrow);
+
+    QCPItemText *Text_R4 = new QCPItemText(ui->widget);
+    if(H!=R){
+        Text_R4->position->setCoords((B/4.0)+dx, (H+R)/2.0-dy);
+        Text_R4->setRotation(-atan((R-H)/(B/2.0))*180/M_PI);
+    }
+    else Text_R4->position->setCoords((B/4.0), H+0.075*B);
+    Text_R4->setText(str_R);
+    Text_R4->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DrawShouldered_flat()
@@ -557,6 +625,8 @@ void ThirdWindow::DrawShouldered_flat()
     Text_R6->position->setCoords(0, H+0.2*B);
     Text_R6->setText(str_B1);
     Text_R6->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DrawParabolic()
@@ -570,6 +640,7 @@ void ThirdWindow::DrawParabolic()
     }
 
     DrawGraph();
+    DrawPoint();
 }
 
 void ThirdWindow::DrawRoot()
@@ -583,6 +654,7 @@ void ThirdWindow::DrawRoot()
     }
 
     DrawGraph();
+    DrawPoint();
 }
 
 void ThirdWindow::DrawElliptical()
@@ -599,12 +671,27 @@ void ThirdWindow::DrawElliptical()
         y3.push_back(-H*sqrt(1-(4*X*X)/(B*B)));
     }
 
+    DrawGraph();
+
     if(H<=B/2.0){
         C = sqrt(((B*B)/4.0) - H*H);
         x2.push_back(-C);
         y2.push_back(0);
         x2.push_back(C);
         y2.push_back(0);
+
+        QString str_C=QString("%1").arg(C, 0, 'f', 0);
+
+        QCPItemLine *arrow_C = new QCPItemLine(ui->widget);
+        arrow_C->start->setCoords(-C, 0);
+        arrow_C->end->setCoords(0, 0);
+        arrow_C->setHead(QCPLineEnding::esSpikeArrow);
+        arrow_C->setTail(QCPLineEnding::esSpikeArrow);
+
+        QCPItemText *Text_C = new QCPItemText(ui->widget);
+        Text_C->position->setCoords(-C/2.0, -0.075*B);
+        Text_C->setText(str_C);
+        Text_C->setFont(QFont(font().family(), 10));
     }
     else{
         C = sqrt(H*H - ((B*B)/4.0));
@@ -612,9 +699,47 @@ void ThirdWindow::DrawElliptical()
         y2.push_back(-C);
         x2.push_back(0);
         y2.push_back(C);
+
+        QString str_C=QString("%1").arg(C, 0, 'f', 0);
+
+        QCPItemLine *arrow_C = new QCPItemLine(ui->widget);
+        arrow_C->start->setCoords(0, -C);
+        arrow_C->end->setCoords(0, 0);
+        arrow_C->setHead(QCPLineEnding::esSpikeArrow);
+        arrow_C->setTail(QCPLineEnding::esSpikeArrow);
+
+        QCPItemText *Text_b = new QCPItemText(ui->widget);
+        Text_b->position->setCoords(-0.075*B, -C/2.0);
+        Text_b->setRotation(-90);
+        Text_b->setText(str_C);
+        Text_b->setFont(QFont(font().family(), 10));
     }
 
-    DrawGraph();
+    QString str_a=QString("%1").arg(B/2.0, 0, 'f', 0);
+    QString str_b=QString("%1").arg(H, 0, 'f', 0);
+
+    QCPItemLine *arrow_a = new QCPItemLine(ui->widget);
+    arrow_a->start->setCoords(0, 0);
+    arrow_a->end->setCoords(B/2.0, 0);
+    arrow_a->setHead(QCPLineEnding::esSpikeArrow);
+
+    QCPItemText *Text_a = new QCPItemText(ui->widget);
+    Text_a->position->setCoords((B/4.0), -0.075*B);
+    Text_a->setText(str_a);
+    Text_a->setFont(QFont(font().family(), 10));
+
+    QCPItemLine *arrow_b = new QCPItemLine(ui->widget);
+    arrow_b->start->setCoords(0, 0);
+    arrow_b->end->setCoords(0, H);
+    arrow_b->setHead(QCPLineEnding::esSpikeArrow);
+
+    QCPItemText *Text_b = new QCPItemText(ui->widget);
+    Text_b->position->setCoords(-0.075*B, H/2.0);
+    Text_b->setRotation(-90);
+    Text_b->setText(str_b);
+    Text_b->setFont(QFont(font().family(), 10));
+
+    DrawPoint();
 }
 
 void ThirdWindow::DrawCycloid()
@@ -628,6 +753,7 @@ void ThirdWindow::DrawCycloid()
     }
 
     DrawGraph();
+    DrawPoint();
 }
 
 
@@ -646,10 +772,6 @@ void ThirdWindow::DrawGraph()
     Pen1.setWidthF(3);
     Pen1.setColor(Qt::blue);
 
-    QCPScatterStyle Scatter1; //описывает точки
-    Scatter1.setShape(QCPScatterStyle::ssPlus);//тип точки
-    Scatter1.setPen(QPen(Qt::red)); //внешний цвет точки
-    Scatter1.setSize(10);  //размер точки
 
     QPen Pen2;
     Pen2.setWidthF(3);
@@ -662,22 +784,30 @@ void ThirdWindow::DrawGraph()
 
     ui->widget->addGraph();
     ui->widget->graph(1)->addData(x1,y1);
-    ui->widget->graph(1)->setPen(Pen1);
+    ui->widget->graph(1)->setPen(Pen1);     
 
     ui->widget->addGraph();
-    ui->widget->graph(2)->setData(x2, y2);
-    ui->widget->graph(2)->setScatterStyle(Scatter1);
-    ui->widget->graph(2)->setLineStyle(QCPGraph::lsNone); //убирает линию
+    ui->widget->graph(2)->addData(x3,y3);
+    ui->widget->graph(2)->setPen(Pen2);
 
     ui->widget->addGraph();
-    ui->widget->graph(3)->addData(x3,y3);   
+    ui->widget->graph(3)->addData(x4,y4);
     ui->widget->graph(3)->setPen(Pen2);
 
     ui->widget->addGraph();
-    ui->widget->graph(4)->addData(x4,y4);
+    ui->widget->graph(4)->addData(x5,y5);
     ui->widget->graph(4)->setPen(Pen2);
+}
+
+void ThirdWindow::DrawPoint()
+{
+    QCPScatterStyle Scatter1; //описывает точки
+    Scatter1.setShape(QCPScatterStyle::ssPlus);//тип точки
+    Scatter1.setPen(QPen(Qt::red)); //внешний цвет точки
+    Scatter1.setSize(10);  //размер точки
 
     ui->widget->addGraph();
-    ui->widget->graph(5)->addData(x5,y5);
-    ui->widget->graph(5)->setPen(Pen2);
+    ui->widget->graph(5)->setData(x2, y2);
+    ui->widget->graph(5)->setScatterStyle(Scatter1);
+    ui->widget->graph(5)->setLineStyle(QCPGraph::lsNone); //убирает линию
 }
