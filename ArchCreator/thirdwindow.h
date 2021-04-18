@@ -2,6 +2,7 @@
 #define THIRDWINDOW_H
 
 #include <QDialog>
+#include <math.h>
 
 namespace Ui {
 class ThirdWindow;
@@ -21,8 +22,9 @@ private slots:
 private:
     Ui::ThirdWindow *ui;
     int  N;
-    double H, A, B, xBegin, xEnd, yBegin, yEnd, h, X, Y, C, R, L, d;
+    double H, A, B, xBegin, xEnd, yBegin, yEnd, h, X, Y, C, R, L, dx, dy;
     QVector<double> x, y, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
+    QString Name;
     void DrawGraph();
     void DrawPerimeter();
     void Read_from_file();

@@ -1,7 +1,7 @@
 #ifndef SECONDWINDOW_H
 #define SECONDWINDOW_H
 
-//#include <QDialog>
+#include <QDialog>
 #include "thirdwindow.h"
 #include <QFile>
 #include <QTextStream>
